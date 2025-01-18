@@ -14,3 +14,8 @@ class TodoList:
             with open(self.filename, 'r') as file:
                 return json.load(file)
         return []
+    # save todos
+    def save_todos(self):
+        with open(self.filename) as file:
+            json.dump(self.filename, file, indent=4)
+            
