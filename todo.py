@@ -35,3 +35,8 @@ class TodoList:
         except IndexError:
             print("Invalid number")
     
+def print_usage():
+    print("Usage:")
+    print("  python todo.py add [item]       Add a new todo item")
+    print("  python todo.py list             List all todo items")
+    print("  python todo.py remove [index]   Remove a todo item by index")
