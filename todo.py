@@ -26,3 +26,12 @@ class TodoList:
     def list_todos(self):
         for idx, item in enumerate(self.todos, start=1):
             print(f"{idx}. {item}")
+    # removing todos
+    def remove_todos(self, index):
+        try:
+            removed_item = self.todos.pop(index - 1)
+            self.save_todos()
+            print(f"Deleted, {removed_item}")
+        except IndexError:
+            print("Invalid number")
+    
