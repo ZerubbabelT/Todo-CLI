@@ -18,4 +18,7 @@ class TodoList:
     def save_todos(self):
         with open(self.filename) as file:
             json.dump(self.filename, file, indent=4)
-            
+    # adding todos
+    def add_todos(self, item):
+        self.filename.append(item)
+        self.save_todos() 
