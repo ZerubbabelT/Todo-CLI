@@ -16,18 +16,18 @@ class TodoList:
         return []
     # save todos
     def save_todos(self):
-        with open(self.filename) as file:
+        with open(self.filename, 'w') as file:
             json.dump(self.todos, file, indent=4)
     # adding todos
-    def add_todos(self, item):
+    def add(self, item):
         self.todos.append(item)
         self.save_todos()
     # list todos
-    def list_todos(self):
+    def lists(self):
         for idx, item in enumerate(self.todos, start=1):
             print(f"{idx}. {item}")
     # removing todos
-    def remove_todos(self, index):
+    def remove(self, index):
         try:
             removed_item = self.todos.pop(index - 1)
             self.save_todos()
@@ -52,12 +52,12 @@ def main():
         if len(sys.argv) < 3:
             print("Please provide an item to add!")
             return
-        item = "".join(sys.argv[2])
-        todo_list.add_todos(item)
+        item = ' '.join(sys.argv[2:])
+        todo_list.add(item)
         print(f"Added {item}")
         
     elif command == "list":
-        todo_list.list_todos()
+        todo_list.lists()
 
     elif command == "remove":
         if len(sys.argv) < 3:
@@ -65,7 +65,7 @@ def main():
             return
         try:
             index = int(sys.argv[2])
-            todo_list.remove_todos(index)
+            todo_list.remove(index)
         except ValueError:
             print("Invalid index. Please try again")
     else:
