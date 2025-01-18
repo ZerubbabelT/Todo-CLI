@@ -40,3 +40,36 @@ def print_usage():
     print("  python todo.py add [item]       Add a new todo item")
     print("  python todo.py list             List all todo items")
     print("  python todo.py remove [index]   Remove a todo item by index")
+
+def main():
+    todo_list = TodoList()
+    if len(sys.argv) < 2:
+        print_usage()
+        return
+    
+    command = sys.argv[1]
+    if command == "add":
+        if len(sys.argv) < 3:
+            print("Please provide an item to add!")
+            return
+        item = "".join(sys.argv[2])
+        todo_list.add_todos(item)
+        print(f"Added {item}")
+        
+    elif command == "list":
+        todo_list.list_todos()
+
+    elif command == "remove":
+        if len(sys.argv) < 3:
+            print("Please provide an index of item to delete")
+            return
+        try:
+            index = int(sys.argv[2])
+            todo_list.remove_todos(index)
+        except ValueError:
+            print("Invalid index. Please try again")
+    else:
+        print_usage()
+
+if __name__ == "__main__":
+    main()
