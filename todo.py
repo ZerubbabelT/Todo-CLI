@@ -17,8 +17,12 @@ class TodoList:
     # save todos
     def save_todos(self):
         with open(self.filename) as file:
-            json.dump(self.filename, file, indent=4)
+            json.dump(self.todos, file, indent=4)
     # adding todos
     def add_todos(self, item):
-        self.filename.append(item)
-        self.save_todos() 
+        self.todos.append(item)
+        self.save_todos()
+    # list todos
+    def list_todos(self):
+        for idx, item in enumerate(self.todos, start=1):
+            print(f"{idx}. {item}")
